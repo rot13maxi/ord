@@ -76,12 +76,13 @@ pub(crate) struct TransactionBuilder {
   outgoing: SatPoint,
   unused_change_addresses: Vec<Address>,
   utxos: BTreeSet<OutPoint>,
+  fee_rate: Amount,
 }
 
 type Result<T> = std::result::Result<T, Error>;
 
 impl TransactionBuilder {
-  pub(crate) const TARGET_FEE_RATE: Amount = Amount::from_sat(1);
+  pub(crate) const DEFAULT_FEE_RATE: Amount = Amount::from_sat(1);
   const MAX_POSTAGE: Amount = Amount::from_sat(2 * 10_000);
   const TARGET_POSTAGE: Amount = Amount::from_sat(10_000);
 
@@ -91,8 +92,9 @@ impl TransactionBuilder {
     amounts: BTreeMap<OutPoint, Amount>,
     recipient: Address,
     change: Vec<Address>,
+    fee_rate: Option<Amount>,
   ) -> Result<Transaction> {
-    Self::new(outgoing, inscriptions, amounts, recipient, change)
+    Self::new(outgoing, inscriptions, amounts, recipient, change, fee_rate)
       .select_outgoing()?
       .align_outgoing()
       .pad_alignment_output()?
@@ -108,6 +110,7 @@ impl TransactionBuilder {
     amounts: BTreeMap<OutPoint, Amount>,
     recipient: Address,
     change: Vec<Address>,
+    fee_rate: Option<Amount>
   ) -> Self {
     Self {
       utxos: amounts.keys().cloned().collect(),
@@ -119,6 +122,7 @@ impl TransactionBuilder {
       recipient,
       outgoing,
       unused_change_addresses: change,
+      fee_rate: fee_rate.unwrap_or(Self::DEFAULT_FEE_RATE)
     }
   }
 
@@ -291,7 +295,7 @@ impl TransactionBuilder {
   }
 
   fn estimate_fee(&self) -> Amount {
-    Self::TARGET_FEE_RATE * self.estimate_vsize().try_into().unwrap()
+    self.fee_rate * self.estimate_vsize().try_into().unwrap()
   }
 
   fn build(self) -> Result<Transaction> {
@@ -424,7 +428,7 @@ impl TransactionBuilder {
     }
 
     let fee_rate = fee.to_sat() as f64 / self.estimate_vsize() as f64;
-    let target_fee_rate = Self::TARGET_FEE_RATE.to_sat() as f64;
+    let target_fee_rate = self.fee_rate.to_sat() as f64;
     assert!(
       fee_rate == target_fee_rate,
       "invariant: fee rate is equal to target fee rate: actual fee rate: {} target_fee rate: {}",

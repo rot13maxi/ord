@@ -22,6 +22,8 @@ pub(crate) struct Inscribe {
   satpoint: Option<SatPoint>,
   #[clap(long, help = "Inscribe sat with contents of <FILE>")]
   file: PathBuf,
+  #[clap(long, help = "Set fee_rate in sats/vB for commit and reveal transactions")]
+  fee_rate: Option<u64>,
 }
 
 impl Inscribe {
@@ -50,6 +52,7 @@ impl Inscribe {
         utxos,
         commit_tx_change,
         reveal_tx_destination,
+        self.fee_rate.map(Amount::from_sat)
       )?;
 
     Inscribe::backup_recovery_key(&client, recovery_key_pair, options.chain().network())?;
@@ -79,6 +82,7 @@ impl Inscribe {
     utxos: BTreeMap<OutPoint, Amount>,
     change: Vec<Address>,
     destination: Address,
+    fee_rate: Option<Amount>,
   ) -> Result<(Transaction, Transaction, TweakedKeyPair)> {
     let satpoint = if let Some(satpoint) = satpoint {
       satpoint
@@ -139,6 +143,7 @@ impl Inscribe {
       utxos,
       commit_tx_address.clone(),
       change,
+      fee_rate,
     )?;
 
     let (vout, output) = unsigned_commit_tx
@@ -177,7 +182,7 @@ impl Inscribe {
       reveal_tx.input[0].witness.push(&reveal_script);
       reveal_tx.input[0].witness.push(&control_block.serialize());
 
-      TransactionBuilder::TARGET_FEE_RATE * reveal_tx.vsize().try_into().unwrap()
+      fee_rate.unwrap_or(TransactionBuilder::DEFAULT_FEE_RATE) * reveal_tx.vsize().try_into().unwrap()
     };
 
     reveal_tx.output[0].value = reveal_tx.output[0]
@@ -287,7 +292,7 @@ mod tests {
     )
     .unwrap();
 
-    let fee = TransactionBuilder::TARGET_FEE_RATE * reveal_tx.vsize().try_into().unwrap();
+    let fee = TransactionBuilder::DEFAULT_FEE_RATE * reveal_tx.vsize().try_into().unwrap();
 
     assert_eq!(
       reveal_tx.output[0].value,

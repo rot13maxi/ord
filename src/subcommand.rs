@@ -12,6 +12,7 @@ pub mod subsidy;
 pub mod supply;
 pub mod traits;
 pub mod wallet;
+mod mempool;
 
 fn print_json(output: impl Serialize) -> Result {
   serde_json::to_writer_pretty(io::stdout(), &output)?;
@@ -33,6 +34,8 @@ pub(crate) enum Subcommand {
   Info(info::Info),
   #[clap(about = "List the satoshis in an output")]
   List(list::List),
+  #[clap(about = "List inscriptions in the mempool")]
+  Mempool(mempool::Mempool),
   #[clap(about = "Parse a satoshi from ordinal notation")]
   Parse(parse::Parse),
   #[clap(about = "Display information about a block's subsidy")]
@@ -56,6 +59,7 @@ impl Subcommand {
       Self::Index => index::run(options),
       Self::Info(info) => info.run(options),
       Self::List(list) => list.run(options),
+      Self::Mempool(mempool) => mempool.run(options),
       Self::Parse(parse) => parse.run(),
       Self::Subsidy(subsidy) => subsidy.run(),
       Self::Server(server) => {

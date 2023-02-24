@@ -1,6 +1,6 @@
-use std::ops::Deref;
-use crate::teleburn_address::EthereumTeleburnAddress;
 use super::*;
+use crate::teleburn_address::EthereumTeleburnAddress;
+use std::ops::Deref;
 
 pub(super) struct Flotsam {
   inscription_id: InscriptionId,
@@ -68,7 +68,7 @@ impl<'a, 'db, 'tx> InscriptionUpdater<'a, 'db, 'tx> {
       satpoint_to_id,
       timestamp,
       value_cache,
-      teleburn_to_id
+      teleburn_to_id,
     })
   }
 
@@ -241,8 +241,10 @@ impl<'a, 'db, 'tx> InscriptionUpdater<'a, 'db, 'tx> {
         )?;
 
         self.teleburn_to_id.insert(
-          EthereumTeleburnAddress::from(InscriptionId::load(inscription_id)).address.deref(),
-          &inscription_id
+          EthereumTeleburnAddress::from(InscriptionId::load(inscription_id))
+            .address
+            .deref(),
+          &inscription_id,
         )?;
 
         self.next_number += 1;

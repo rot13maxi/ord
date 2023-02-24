@@ -302,7 +302,7 @@ impl Updater {
       &mut satpoint_to_inscription_id,
       block.header.time,
       value_cache,
-      &mut teleburn_to_inscription_id
+      &mut teleburn_to_inscription_id,
     )?;
 
     if self.index_sats {

@@ -521,6 +521,20 @@ impl Index {
     )
   }
 
+  pub(crate) fn get_inscription_id_by_teleburn(
+    &self,
+    teleburn_address: &str,
+  ) -> Result<Option<InscriptionId>> {
+    Ok(
+      self
+        .database
+        .begin_read()?
+        .open_table(TELEBURN_TO_INSCRIPTION_ID)?
+        .get(teleburn_address)?
+        .map(|inscription_id| Entry::load(*inscription_id.value())),
+    )
+  }
+
   pub(crate) fn get_inscription_satpoint_by_id(
     &self,
     inscription_id: InscriptionId,

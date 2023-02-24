@@ -74,12 +74,12 @@ struct EthereumTeleburnAddress {
   address: String,
 }
 #[derive(Deserialize)]
-struct Teleburn {
-  ethereum: EthereumTeleburnAddress,
+enum Teleburn {
+  Ethereum(EthereumTeleburnAddress),
 }
 
 fn teleburn(rpc_server: &test_bitcoincore_rpc::Handle, inscription: &str) -> Teleburn {
-  let output = CommandBuilder::new(format!("teleburn {inscription}"))
+  let output = CommandBuilder::new(format!("teleburn --inscription-id {inscription}"))
     .rpc_server(rpc_server)
     .output();
   output

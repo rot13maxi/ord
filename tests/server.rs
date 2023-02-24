@@ -46,7 +46,8 @@ fn inscription_page() {
     ..
   } = inscribe(&rpc_server);
 
-  let teleburn_address = teleburn(&rpc_server, &inscription).ethereum.address;
+  let crate::Teleburn::Ethereum(teleburn) = teleburn(&rpc_server, &inscription);
+  let teleburn_address = teleburn.address;
 
   TestServer::spawn_with_args(&rpc_server, &[]).assert_response_regex(
     format!("/inscription/{inscription}"),

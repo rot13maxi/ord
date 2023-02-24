@@ -68,7 +68,7 @@ impl Subcommand {
         server.run(options, index, handle)
       }
       Self::Supply => supply::run(),
-      Self::Teleburn(teleburn) => teleburn.run(),
+      Self::Teleburn(teleburn) => teleburn.run(options),
       Self::Traits(traits) => traits.run(),
       Self::Wallet(wallet) => wallet.run(options),
     }

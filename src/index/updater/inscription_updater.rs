@@ -1,3 +1,5 @@
+use std::ops::Deref;
+use crate::teleburn_address::EthereumTeleburnAddress;
 use super::*;
 
 pub(super) struct Flotsam {
@@ -26,6 +28,7 @@ pub(super) struct InscriptionUpdater<'a, 'db, 'tx> {
   satpoint_to_id: &'a mut Table<'db, 'tx, &'static SatPointValue, &'static InscriptionIdValue>,
   timestamp: u32,
   value_cache: &'a mut HashMap<OutPoint, u64>,
+  teleburn_to_id: &'a mut Table<'db, 'tx, &'static str, &'static InscriptionIdValue>,
 }
 
 impl<'a, 'db, 'tx> InscriptionUpdater<'a, 'db, 'tx> {
@@ -41,6 +44,7 @@ impl<'a, 'db, 'tx> InscriptionUpdater<'a, 'db, 'tx> {
     satpoint_to_id: &'a mut Table<'db, 'tx, &'static SatPointValue, &'static InscriptionIdValue>,
     timestamp: u32,
     value_cache: &'a mut HashMap<OutPoint, u64>,
+    teleburn_to_id: &'a mut Table<'db, 'tx, &'static str, &'static InscriptionIdValue>,
   ) -> Result<Self> {
     let next_number = number_to_id
       .iter()?
@@ -64,6 +68,7 @@ impl<'a, 'db, 'tx> InscriptionUpdater<'a, 'db, 'tx> {
       satpoint_to_id,
       timestamp,
       value_cache,
+      teleburn_to_id
     })
   }
 
@@ -233,6 +238,11 @@ impl<'a, 'db, 'tx> InscriptionUpdater<'a, 'db, 'tx> {
             timestamp: self.timestamp,
           }
           .store(),
+        )?;
+
+        self.teleburn_to_id.insert(
+          EthereumTeleburnAddress::from(InscriptionId::load(inscription_id)).address.deref(),
+          &inscription_id
         )?;
 
         self.next_number += 1;

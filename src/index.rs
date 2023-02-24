@@ -41,6 +41,7 @@ define_table! { SAT_TO_INSCRIPTION_ID, u64, &InscriptionIdValue }
 define_table! { SAT_TO_SATPOINT, u64, &SatPointValue }
 define_table! { STATISTIC_TO_COUNT, u64, u64 }
 define_table! { WRITE_TRANSACTION_STARTING_BLOCK_COUNT_TO_TIMESTAMP, u64, u128 }
+define_table! { TELEBURN_TO_INSCRIPTION_ID, &str, &InscriptionIdValue}
 
 pub(crate) struct Index {
   auth: Auth,

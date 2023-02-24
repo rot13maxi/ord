@@ -283,6 +283,7 @@ impl Updater {
     let mut sat_to_inscription_id = wtx.open_table(SAT_TO_INSCRIPTION_ID)?;
     let mut satpoint_to_inscription_id = wtx.open_table(SATPOINT_TO_INSCRIPTION_ID)?;
     let mut statistic_to_count = wtx.open_table(STATISTIC_TO_COUNT)?;
+    let mut teleburn_to_inscription_id = wtx.open_table(TELEBURN_TO_INSCRIPTION_ID)?;
 
     let mut lost_sats = statistic_to_count
       .get(&Statistic::LostSats.key())?
@@ -301,6 +302,7 @@ impl Updater {
       &mut satpoint_to_inscription_id,
       block.header.time,
       value_cache,
+      &mut teleburn_to_inscription_id
     )?;
 
     if self.index_sats {

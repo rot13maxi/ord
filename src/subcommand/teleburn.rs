@@ -3,6 +3,7 @@ use crate::teleburn_address::EthereumTeleburnAddress;
 
 #[derive(Debug, Parser)]
 pub(crate) struct Teleburn {
+  reverse: bool,
   recipient: InscriptionId,
 }
 

@@ -88,11 +88,33 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
@@ -118,7 +140,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/casey/ord" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/ordinals/ord" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -156,7 +178,7 @@ first-in-first-out. Both the numbering scheme and the transfer scheme rely on
 <em>order</em>, the numbering scheme on the <em>order</em> in which satoshis are mined, and
 the transfer scheme on the <em>order</em> of transaction inputs and outputs. Thus the
 name, <em>ordinals</em>.</p>
-<p>Technical details are available in <a href="https://github.com/casey/ord/blob/master/bip.mediawiki">the
+<p>Technical details are available in <a href="https://github.com/ordinals/ord/blob/master/bip.mediawiki">the
 BIP</a>.</p>
 <p>Ordinal theory does not require a separate token, another blockchain, or any
 changes to Bitcoin. It works right now.</p>
@@ -191,7 +213,7 @@ ordinal number using the characters <code>a</code> through <code>z</code>.</p>
 </ul>
 <p>Arbitrary assets, such as NFTs, security tokens, accounts, or stablecoins can
 be attached to satoshis using ordinal numbers as stable identifiers.</p>
-<p>Ordinals is an open-source project, developed <a href="https://github.com/casey/ord">on
+<p>Ordinals is an open-source project, developed <a href="https://github.com/ordinals/ord">on
 GitHub</a>. The project consists of a BIP describing
 the ordinal scheme, an index that communicates with a Bitcoin Core node to
 track the location of all satoshis, a wallet that allows making ordinal-aware

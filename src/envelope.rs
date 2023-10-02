@@ -15,13 +15,13 @@ pub(crate) const METAPROTOCOL_TAG: [u8; 1] = [7];
 
 type Result<T> = std::result::Result<T, script::Error>;
 type RawEnvelope = Envelope<Vec<Vec<u8>>>;
-pub(crate) type ParsedEnvelope = Envelope<Inscription>;
+pub type ParsedEnvelope = Envelope<Inscription>;
 
 #[derive(Debug, PartialEq, Clone)]
-pub(crate) struct Envelope<T> {
-  pub(crate) payload: T,
-  pub(crate) input: u32,
-  pub(crate) offset: u32,
+pub struct Envelope<T> {
+  pub payload: T,
+  pub input: u32,
+  pub offset: u32,
 }
 
 fn remove_field(fields: &mut BTreeMap<&[u8], Vec<&[u8]>>, field: &[u8]) -> Option<Vec<u8>> {
@@ -86,7 +86,7 @@ impl From<RawEnvelope> for ParsedEnvelope {
 }
 
 impl ParsedEnvelope {
-  pub(crate) fn from_transaction(transaction: &Transaction) -> Vec<Self> {
+  pub fn from_transaction(transaction: &Transaction) -> Vec<Self> {
     RawEnvelope::from_transaction(transaction)
       .into_iter()
       .map(|envelope| envelope.into())

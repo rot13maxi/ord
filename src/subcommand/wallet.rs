@@ -26,6 +26,7 @@ pub mod sats;
 pub mod send;
 pub mod transaction_builder;
 pub mod transactions;
+mod sophon;
 
 #[derive(Debug, Parser)]
 pub(crate) enum Wallet {
@@ -51,6 +52,8 @@ pub(crate) enum Wallet {
   Outputs,
   #[command(about = "List unspent cardinal outputs in wallet")]
   Cardinals,
+  #[command(about = "Block issuance of metaprotocol assets")]
+  Sophon,
 }
 
 impl Wallet {
@@ -67,6 +70,7 @@ impl Wallet {
       Self::Transactions(transactions) => transactions.run(options),
       Self::Outputs => outputs::run(options),
       Self::Cardinals => cardinals::run(options),
+      Self::Sophon => sophon::run(options),
     }
   }
 }

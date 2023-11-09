@@ -56,6 +56,16 @@ pub(crate) struct Options {
   pub(crate) wallet: String,
   #[arg(long, short = 'j', help = "Enable JSON API.")]
   pub(crate) enable_json_api: bool,
+  #[arg(
+    long,
+    help = "Threshold for splitting deposits into smaller UTXOs when running sophon mode"
+  )]
+  pub(crate) sophon_threshold: Option<u64>,
+  #[arg(
+    long,
+    help = "Fee rate for splitting deposits into smaller UTXOs when running sophon mode"
+  )]
+  pub(crate) sophon_fee_rate: Option<f64>,
 }
 
 impl Options {

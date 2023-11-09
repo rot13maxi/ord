@@ -24,9 +24,9 @@ pub mod receive;
 mod restore;
 pub mod sats;
 pub mod send;
+mod sophon;
 pub mod transaction_builder;
 pub mod transactions;
-mod sophon;
 
 #[derive(Debug, Parser)]
 pub(crate) enum Wallet {

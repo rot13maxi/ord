@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js coal">
+<html lang="en" class="coal" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Ordinal Theory Handbook</title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -30,9 +30,10 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="language-picker.css">
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -62,29 +63,34 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('coal')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="digital-artifacts.html"><strong aria-hidden="true">2.</strong> Digital Artifacts</a></li><li class="chapter-item expanded "><a href="inscriptions.html"><strong aria-hidden="true">3.</strong> Inscriptions</a></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">4.</strong> FAQ</a></li><li class="chapter-item expanded "><a href="contributing.html"><strong aria-hidden="true">5.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="donate.html"><strong aria-hidden="true">6.</strong> Donate</a></li><li class="chapter-item expanded "><a href="guides.html"><strong aria-hidden="true">7.</strong> Guides</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guides/explorer.html"><strong aria-hidden="true">7.1.</strong> Explorer</a></li><li class="chapter-item expanded "><a href="guides/inscriptions.html"><strong aria-hidden="true">7.2.</strong> Inscriptions</a></li><li class="chapter-item expanded "><a href="guides/sat-hunting.html"><strong aria-hidden="true">7.3.</strong> Sat Hunting</a></li><li class="chapter-item expanded "><a href="guides/collecting.html"><strong aria-hidden="true">7.4.</strong> Collecting</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guides/collecting/sparrow-wallet.html"><strong aria-hidden="true">7.4.1.</strong> Sparrow Wallet</a></li></ol></li><li class="chapter-item expanded "><a href="guides/moderation.html"><strong aria-hidden="true">7.5.</strong> Moderation</a></li></ol></li><li class="chapter-item expanded "><a href="bounties.html"><strong aria-hidden="true">8.</strong> Bounties</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="bounty/0.html"><strong aria-hidden="true">8.1.</strong> Bounty 0: 100,000 sats Claimed!</a></li><li class="chapter-item expanded "><a href="bounty/1.html"><strong aria-hidden="true">8.2.</strong> Bounty 1: 200,000 sats Claimed!</a></li><li class="chapter-item expanded "><a href="bounty/2.html"><strong aria-hidden="true">8.3.</strong> Bounty 2: 300,000 sats Claimed!</a></li><li class="chapter-item expanded "><a href="bounty/3.html"><strong aria-hidden="true">8.4.</strong> Bounty 3: 400,000 sats</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="digital-artifacts.html"><strong aria-hidden="true">2.</strong> Digital Artifacts</a></li><li class="chapter-item expanded "><a href="inscriptions.html"><strong aria-hidden="true">3.</strong> Inscriptions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="inscriptions/metadata.html"><strong aria-hidden="true">3.1.</strong> Metadata</a></li><li class="chapter-item expanded "><a href="inscriptions/provenance.html"><strong aria-hidden="true">3.2.</strong> Provenance</a></li><li class="chapter-item expanded "><a href="inscriptions/recursion.html"><strong aria-hidden="true">3.3.</strong> Recursion</a></li><li class="chapter-item expanded "><a href="inscriptions/pointer.html"><strong aria-hidden="true">3.4.</strong> Pointer</a></li></ol></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">4.</strong> FAQ</a></li><li class="chapter-item expanded "><a href="contributing.html"><strong aria-hidden="true">5.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="donate.html"><strong aria-hidden="true">6.</strong> Donate</a></li><li class="chapter-item expanded "><a href="guides.html"><strong aria-hidden="true">7.</strong> Guides</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guides/explorer.html"><strong aria-hidden="true">7.1.</strong> Explorer</a></li><li class="chapter-item expanded "><a href="guides/inscriptions.html"><strong aria-hidden="true">7.2.</strong> Inscriptions</a></li><li class="chapter-item expanded "><a href="guides/batch-inscribing.html"><strong aria-hidden="true">7.3.</strong> Batch Inscribing</a></li><li class="chapter-item expanded "><a href="guides/sat-hunting.html"><strong aria-hidden="true">7.4.</strong> Sat Hunting</a></li><li class="chapter-item expanded "><a href="guides/teleburning.html"><strong aria-hidden="true">7.5.</strong> Teleburning</a></li><li class="chapter-item expanded "><a href="guides/collecting.html"><strong aria-hidden="true">7.6.</strong> Collecting</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guides/collecting/sparrow-wallet.html"><strong aria-hidden="true">7.6.1.</strong> Sparrow Wallet</a></li></ol></li><li class="chapter-item expanded "><a href="guides/testing.html"><strong aria-hidden="true">7.7.</strong> Testing</a></li><li class="chapter-item expanded "><a href="guides/moderation.html"><strong aria-hidden="true">7.8.</strong> Moderation</a></li><li class="chapter-item expanded "><a href="guides/reindexing.html"><strong aria-hidden="true">7.9.</strong> Reindexing</a></li></ol></li><li class="chapter-item expanded "><a href="bounties.html"><strong aria-hidden="true">8.</strong> Bounties</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="bounty/0.html"><strong aria-hidden="true">8.1.</strong> Bounty 0: 100,000 sats Claimed!</a></li><li class="chapter-item expanded "><a href="bounty/1.html"><strong aria-hidden="true">8.2.</strong> Bounty 1: 200,000 sats Claimed!</a></li><li class="chapter-item expanded "><a href="bounty/2.html"><strong aria-hidden="true">8.3.</strong> Bounty 2: 300,000 sats Claimed!</a></li><li class="chapter-item expanded "><a href="bounty/3.html"><strong aria-hidden="true">8.4.</strong> Bounty 3: 400,000 sats</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -117,9 +123,9 @@
                                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -138,6 +144,74 @@
                     <h1 class="menu-title">Ordinal Theory Handbook</h1>
 
                     <div class="right-buttons">
+                        <button id="language-toggle" class="icon-button" type="button"
+                                title="Change language" aria-label="Change language"
+                                aria-haspopup="true" aria-expanded="false"
+                                aria-controls="language-list">
+                            <i class="fa fa-globe"></i>
+                        </button>
+                        <ul id="language-list" class="theme-popup" aria-label="Languages" role="menu">
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="en">English</a>
+                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="de">Deutsch</a>
+                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="fr">Français</a>
+                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="es">Español</a>
+                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="pt">Português</a>
+                          </button></li>
+                           <li role="none"><button role="menuitem" class="theme">
+                              <a id="ru">Русский</a>
+                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="zh">中文版</a>
+                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="ja">日本語版</a>
+                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="ko">한국어</a>
+                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="fil">Filipino</a>
+                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme">
+                              <a id="ar">العربية</a>
+                          </button></li>
+                        </ul>
+
+                        <script>
+                          let langToggle = document.getElementById("language-toggle");
+                          let langList = document.getElementById("language-list");
+                          langToggle.addEventListener("click", (event) => {
+                              langList.style.display = langList.style.display == "block" ? "none" : "block";
+                          });
+                          let selectedLang = document.getElementById("en");
+                          if (selectedLang) {
+                              selectedLang.parentNode.classList.add("theme-selected");
+                          }
+
+                          // The path to the root, taking the current
+                          // language into account.
+                          let full_path_to_root = "";
+                          // The page path (mdbook only gives us
+                          // access to the path to the Markdown file).
+                          let path = "print.md".replace(/\.md$/, ".html");
+                          for (let lang of langList.querySelectorAll("a")) {
+                              if (lang.id == "en") {
+                                  lang.href = `${full_path_to_root}${path}`;
+                              } else {
+                                  lang.href = `${full_path_to_root}${lang.id}/${path}`;
+                              }
+                          }
+                        </script>
+
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
@@ -198,6 +272,8 @@ enabled by ordinal theory.</p>
 <li><a href="https://github.com/ordinals/ord/">GitHub</a></li>
 <li><a href="https://github.com/ordinals/ord/blob/master/bip.mediawiki">BIP</a></li>
 <li><a href="https://discord.gg/ordinals">Discord</a></li>
+<li><a href="https://ordinals.org/">Open Ordinals Institute Website</a></li>
+<li><a href="https://x.com/ordinalsorg">Open Ordinals Institute X</a></li>
 <li><a href="https://ordinals.com">Mainnet Block Explorer</a></li>
 <li><a href="https://signet.ordinals.com">Signet Block Explorer</a></li>
 </ul>
@@ -281,7 +357,7 @@ new sats created in every block is cut in half.</p>
 <p><em>Cycles</em>: Every six halvings, something magical happens: the halving and the
 difficulty adjustment coincide. This is called a conjunction, and the time
 period between conjunctions a cycle. A conjunction occurs roughly every 24
-years. The first conjunction should happen some time in 2032.</p>
+years. The first conjunction should happen sometime in 2032.</p>
 </li>
 </ul>
 <p>This gives us the following rarity levels:</p>
@@ -306,14 +382,14 @@ for <em>A</em>, <em>B</em>, <em>C</em>, and <em>D</em>, respectively.</p>
 <p>Now for some examples. This satoshi is common:</p>
 <pre><code>1°1′1″1‴
 │ │ │ ╰─ Not first sat in block
-│ │ ╰─── Not first block in difficutly adjustment period
+│ │ ╰─── Not first block in difficulty adjustment period
 │ ╰───── Not first block in halving epoch
 ╰─────── Second cycle
 </code></pre>
 <p>This satoshi is uncommon:</p>
 <pre><code>1°1′1″0‴
 │ │ │ ╰─ First sat in block
-│ │ ╰─── Not first block in difficutly adjustment period
+│ │ ╰─── Not first block in difficulty adjustment period
 │ ╰───── Not first block in halving epoch
 ╰─────── Second cycle
 </code></pre>
@@ -348,7 +424,7 @@ for <em>A</em>, <em>B</em>, <em>C</em>, and <em>D</em>, respectively.</p>
 <p>If the block offset is zero, it may be omitted. This is the uncommon satoshi
 from above:</p>
 <pre><code>1°1′1″
-│ │ ╰─ Not first block in difficutly adjustment period
+│ │ ╰─ Not first block in difficulty adjustment period
 │ ╰─── Not first block in halving epoch
 ╰───── Second cycle
 </code></pre>
@@ -365,7 +441,7 @@ from above:</p>
 <h3 id="current-supply"><a class="header" href="#current-supply">Current Supply</a></h3>
 <ul>
 <li><code>common</code>: 1.9 quadrillion</li>
-<li><code>uncommon</code>: 745,855</li>
+<li><code>uncommon</code>: 808,262</li>
 <li><code>rare</code>: 369</li>
 <li><code>epic</code>: 3</li>
 <li><code>legendary</code>: 0</li>
@@ -381,7 +457,7 @@ short and get longer, but then all the good, short names would be trapped in
 the unspendable genesis block.</p>
 <p>As an example, 1905530482684727°'s name is &quot;iaiufjszmoba&quot;. The name of the last
 satoshi to be mined is &quot;a&quot;. Every combination of 10 characters or less is out
-there, or will be out there, some day.</p>
+there, or will be out there, someday.</p>
 <h2 id="exotics"><a class="header" href="#exotics">Exotics</a></h2>
 <p>Satoshis may be prized for reasons other than their name or rarity. This might
 be due to a quality of the number itself, like having an integer square or cube
@@ -416,7 +492,7 @@ especially early ordinals, are certainly of historical interest.</p>
 ordinals were independently discovered on at least two separate occasions, long
 before the era of modern NFTs began.</p>
 <p>On August 21st, 2012, Charlie Lee <a href="https://bitcointalk.org/index.php?topic=102355.0">posted a proposal to add proof-of-stake to
-Bitcoin to the Bitocin Talk
+Bitcoin to the Bitcoin Talk
 forum</a>. This wasn't an asset
 scheme, but did use the ordinal algorithm, and was implemented but never
 deployed.</p>
@@ -511,26 +587,194 @@ OP_ENDIF
 </code></pre>
 <p>First the string <code>ord</code> is pushed, to disambiguate inscriptions from other uses
 of envelopes.</p>
-<p><code>OP_PUSH 1</code> indicates that the next push contains the content type, and <code>OP_PUSH 0</code>indicates that subsequent data pushes contain the content itself. Multiple data
-pushes must be used for large inscriptions, as one of taproot's few
-restrictions is that individual data pushes may not be larger than 520 bytes.</p>
+<p><code>OP_PUSH 1</code> indicates that the next push contains the content type, and
+<code>OP_PUSH 0</code>indicates that subsequent data pushes contain the content itself.
+Multiple data pushes must be used for large inscriptions, as one of taproot's
+few restrictions is that individual data pushes may not be larger than 520
+bytes.</p>
 <p>The inscription content is contained within the input of a reveal transaction,
-and the inscription is made on the first sat of its input. This sat can
-then be tracked using the familiar rules of ordinal theory, allowing it to be
+and the inscription is made on the first sat of its input. This sat can then be
+tracked using the familiar rules of ordinal theory, allowing it to be
 transferred, bought, sold, lost to fees, and recovered.</p>
 <h2 id="content"><a class="header" href="#content">Content</a></h2>
 <p>The data model of inscriptions is that of a HTTP response, allowing inscription
 content to be served by a web server and viewed in a web browser.</p>
+<h2 id="fields"><a class="header" href="#fields">Fields</a></h2>
+<p>Inscriptions may include fields before an optional body. Each field consists of
+two data pushes, a tag and a value.</p>
+<p>Currently, the only defined field is <code>content-type</code>, with a tag of <code>1</code>, whose
+value is the MIME type of the body.</p>
+<p>The beginning of the body and end of fields is indicated with an empty data
+push.</p>
+<p>Unrecognized tags are interpreted differently depending on whether they are
+even or odd, following the &quot;it's okay to be odd&quot; rule used by the Lightning
+Network.</p>
+<p>Even tags are used for fields which may affect creation, initial assignment, or
+transfer of an inscription. Thus, inscriptions with unrecognized even fields
+must be displayed as &quot;unbound&quot;, that is, without a location.</p>
+<p>Odd tags are used for fields which do not affect creation, initial assignment,
+or transfer, such as additional metadata, and thus are safe to ignore.</p>
+<h2 id="inscription-ids"><a class="header" href="#inscription-ids">Inscription IDs</a></h2>
+<p>The inscriptions are contained within the inputs of a reveal transaction. In
+order to uniquely identify them they are assigned an ID of the form:</p>
+<p><code>521f8eccffa4c41a3a7728dd012ea5a4a02feed81f41159231251ecf1e5c79dai0</code></p>
+<p>The part in front of the <code>i</code> is the transaction ID (<code>txid</code>) of the reveal
+transaction. The number after the <code>i</code> defines the index (starting at 0) of new inscriptions
+being inscribed in the reveal transaction.</p>
+<p>Inscriptions can either be located in different inputs, within the same input or
+a combination of both. In any case the ordering is clear, since a parser would
+go through the inputs consecutively and look for all inscription <code>envelopes</code>.</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Input</th><th style="text-align: center">Inscription Count</th><th style="text-align: center">Indices</th></tr></thead><tbody>
+<tr><td style="text-align: center">0</td><td style="text-align: center">2</td><td style="text-align: center">i0, i1</td></tr>
+<tr><td style="text-align: center">1</td><td style="text-align: center">1</td><td style="text-align: center">i2</td></tr>
+<tr><td style="text-align: center">2</td><td style="text-align: center">3</td><td style="text-align: center">i3, i4, i5</td></tr>
+<tr><td style="text-align: center">3</td><td style="text-align: center">0</td><td style="text-align: center"></td></tr>
+<tr><td style="text-align: center">4</td><td style="text-align: center">1</td><td style="text-align: center">i6</td></tr>
+</tbody></table>
+</div>
 <h2 id="sandboxing"><a class="header" href="#sandboxing">Sandboxing</a></h2>
 <p>HTML and SVG inscriptions are sandboxed in order to prevent references to
 off-chain content, thus keeping inscriptions immutable and self-contained.</p>
 <p>This is accomplished by loading HTML and SVG inscriptions inside <code>iframes</code> with
 the <code>sandbox</code> attribute, as well as serving inscription content with
 <code>Content-Security-Policy</code> headers.</p>
-<h2 id="recursion"><a class="header" href="#recursion">Recursion</a></h2>
-<p>An important exception to sandboxing is recursion: access to <code>ord</code>'s <code>/content</code>
-endpoint is permitted, allowing inscriptions to access the content of other
-inscriptions by requesting <code>/content/&lt;INSCRIPTION_ID&gt;</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="metadata"><a class="header" href="#metadata">Metadata</a></h1>
+<p>Inscriptions may include <a href="https://cbor.io/">CBOR</a> metadata, stored as data
+pushes in fields with tag <code>5</code>. Since data pushes are limited to 520 bytes,
+metadata longer than 520 bytes must be split into multiple tag <code>5</code> fields,
+which will then be concatenated before decoding.</p>
+<p>Metadata is human readable, and all metadata will be displayed to the user with
+its inscription. Inscribers are encouraged to consider how metadata will be
+displayed, and make metadata concise and attractive.</p>
+<p>Metadata is rendered to HTML for display as follows:</p>
+<ul>
+<li><code>null</code>, <code>true</code>, <code>false</code>, numbers, floats, and strings are rendered as plain
+text.</li>
+<li>Byte strings are rendered as uppercase hexadecimal.</li>
+<li>Arrays are rendered as <code>&lt;ul&gt;</code> tags, with every element wrapped in <code>&lt;li&gt;</code>
+tags.</li>
+<li>Maps are rendered as <code>&lt;dl&gt;</code> tags, with every key wrapped in <code>&lt;dt&gt;</code> tags, and
+every value wrapped in <code>&lt;dd&gt;</code> tags.</li>
+<li>Tags are rendered as the tag , enclosed in a <code>&lt;sup&gt;</code> tag, followed by the
+value.</li>
+</ul>
+<p>CBOR is a complex spec with many different data types, and multiple ways of
+representing the same data. Exotic data types, such as tags, floats, and
+bignums, and encoding such as indefinite values, may fail to display correctly
+or at all. Contributions to <code>ord</code> to remedy this are welcome.</p>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<p>Since CBOR is not human readable, in these examples it is represented as JSON.
+Keep in mind that this is <em>only</em> for these examples, and JSON metadata will
+<em>not</em> be displayed correctly.</p>
+<p>The metadata <code>{&quot;foo&quot;:&quot;bar&quot;,&quot;baz&quot;:[null,true,false,0]}</code> would be included in an inscription as:</p>
+<pre><code>OP_FALSE
+OP_IF
+    ...
+    OP_PUSH 0x05 OP_PUSH '{&quot;foo&quot;:&quot;bar&quot;,&quot;baz&quot;:[null,true,false,0]}'
+    ...
+OP_ENDIF
+</code></pre>
+<p>And rendered as:</p>
+<pre><code>&lt;dl&gt;
+  ...
+  &lt;dt&gt;metadata&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;dl&gt;
+      &lt;dt&gt;foo&lt;/dt&gt;
+      &lt;dd&gt;bar&lt;/dd&gt;
+      &lt;dt&gt;baz&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          &lt;li&gt;null&lt;/li&gt;
+          &lt;li&gt;true&lt;/li&gt;
+          &lt;li&gt;false&lt;/li&gt;
+          &lt;li&gt;0&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+    &lt;/dl&gt;
+  &lt;/dd&gt;
+  ...
+&lt;/dl&gt;
+</code></pre>
+<p>Metadata longer than 520 bytes must be split into multiple fields:</p>
+<pre><code>OP_FALSE
+OP_IF
+    ...
+    OP_PUSH 0x05 OP_PUSH '{&quot;very&quot;:&quot;long&quot;,&quot;metadata&quot;:'
+    OP_PUSH 0x05 OP_PUSH '&quot;is&quot;,&quot;finally&quot;:&quot;done&quot;}'
+    ...
+OP_ENDIF
+</code></pre>
+<p>Which would then be concatinated into
+<code>{&quot;very&quot;:&quot;long&quot;,&quot;metadata&quot;:&quot;is&quot;,&quot;finally&quot;:&quot;done&quot;}</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="provenance"><a class="header" href="#provenance">Provenance</a></h1>
+<p>The owner of an inscription can create child inscriptions, trustlessly
+establishing the provenance of those children on-chain as having been created
+by the owner of the parent inscription. This can be used for collections, with
+the children of a parent inscription being members of the same collection.</p>
+<p>Children can themselves have children, allowing for complex hierarchies. For
+example, an artist might create an inscription representing themselves, with
+sub inscriptions representing collections that they create, with the children
+of those sub inscriptions being items in those collections.</p>
+<h3 id="specification"><a class="header" href="#specification">Specification</a></h3>
+<p>To create a child inscription C with parent inscription P:</p>
+<ul>
+<li>Create an inscribe transaction T as usual for C.</li>
+<li>Spend the parent P in one of the inputs of T.</li>
+<li>Include tag <code>3</code>, i.e. <code>OP_PUSH 3</code>, in C, with the value of the serialized
+binary inscription ID of P, serialized as the 32-byte <code>TXID</code>, followed by the
+four-byte little-endian <code>INDEX</code>, with trailing zeroes omitted.</li>
+</ul>
+<p><em>NB</em> The bytes of a bitcoin transaction ID are reversed in their text
+representation, so the serialized transaction ID will be in the opposite order.</p>
+<h3 id="example-1"><a class="header" href="#example-1">Example</a></h3>
+<p>An example of a child inscription of
+<code>000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1fi0</code>:</p>
+<pre><code>OP_FALSE
+OP_IF
+  OP_PUSH &quot;ord&quot;
+  OP_PUSH 1
+  OP_PUSH &quot;text/plain;charset=utf-8&quot;
+  OP_PUSH 3
+  OP_PUSH 0x1f1e1d1c1b1a191817161514131211100f0e0d0c0b0a09080706050403020100
+  OP_PUSH 0
+  OP_PUSH &quot;Hello, world!&quot;
+OP_ENDIF
+</code></pre>
+<p>Note that the value of tag <code>3</code> is binary, not hex, and that for the child
+inscription to be recognized as a child,
+<code>000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1fi0</code> must be
+spent as one of the inputs of the inscribe transaction.</p>
+<p>Example encoding of inscription ID
+<code>000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1fi255</code>:</p>
+<pre><code>OP_FALSE
+OP_IF
+  …
+  OP_PUSH 3
+  OP_PUSH 0x1f1e1d1c1b1a191817161514131211100f0e0d0c0b0a09080706050403020100ff
+  …
+OP_ENDIF
+</code></pre>
+<p>And of inscription ID <code>000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1fi256</code>:</p>
+<pre><code>OP_FALSE
+OP_IF
+  …
+  OP_PUSH 3
+  OP_PUSH 0x1f1e1d1c1b1a191817161514131211100f0e0d0c0b0a090807060504030201000001
+  …
+OP_ENDIF
+</code></pre>
+<h3 id="notes"><a class="header" href="#notes">Notes</a></h3>
+<p>The tag <code>3</code> is used because it is the first available odd tag. Unrecognized odd
+tags do not make an inscription unbound, so child inscriptions would be
+recognized and tracked by old versions of <code>ord</code>.</p>
+<p>A collection can be closed by burning the collection's parent inscription,
+which guarantees that no more items in the collection can be issued.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="recursion"><a class="header" href="#recursion">Recursion</a></h1>
+<p>An important exception to <a href="inscriptions/../inscriptions.html#sandboxing">sandboxing</a> is
+recursion: access to <code>ord</code>'s <code>/content</code> endpoint is permitted, allowing
+inscriptions to access the content of other inscriptions by requesting
+<code>/content/&lt;INSCRIPTION_ID&gt;</code>.</p>
 <p>This has a number of interesting use-cases:</p>
 <ul>
 <li>
@@ -550,16 +794,65 @@ inscribed as individual images, or in a shared texture atlas, and then
 combined, collage-style, in unique combinations in multiple inscriptions.</p>
 </li>
 </ul>
-<p>A couple other endpoints that inscriptions may access are the following:</p>
+<p>A few other endpoints that inscriptions may access are the following:</p>
 <ul>
 <li><code>/blockheight</code>: latest block height.</li>
 <li><code>/blockhash</code>: latest block hash.</li>
 <li><code>/blockhash/&lt;HEIGHT&gt;</code>: block hash at given block height.</li>
 <li><code>/blocktime</code>: UNIX time stamp of latest block.</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pointer"><a class="header" href="#pointer">Pointer</a></h1>
+<p>In order to make an inscription on a sat other than the first of its input, a
+zero-based integer, called the &quot;pointer&quot;, can be provided with tag <code>2</code>, causing
+the inscription to be made on the sat at the given position in the outputs. If
+the pointer is equal to or greater than the number of total sats in the outputs
+of the inscribe transaction, it is ignored, and the inscription is made as
+usual. The value of the pointer field is a little endian integer, with trailing
+zeroes ignored.</p>
+<p>An even tag is used, so that old versions of <code>ord</code> consider the inscription to
+be unbound, instead of assigning it, incorrectly, to the first sat.</p>
+<p>This can be used to create multiple inscriptions in a single transaction on
+different sats, when otherwise they would be made on the same sat.</p>
+<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
+<p>An inscription with pointer 255:</p>
+<pre><code>OP_FALSE
+OP_IF
+  OP_PUSH &quot;ord&quot;
+  OP_PUSH 1
+  OP_PUSH &quot;text/plain;charset=utf-8&quot;
+  OP_PUSH 2
+  OP_PUSH 0xff
+  OP_PUSH 0
+  OP_PUSH &quot;Hello, world!&quot;
+OP_ENDIF
+</code></pre>
+<p>An inscription with pointer 256:</p>
+<pre><code>OP_FALSE
+OP_IF
+  OP_PUSH &quot;ord&quot;
+  OP_PUSH 1
+  OP_PUSH &quot;text/plain;charset=utf-8&quot;
+  OP_PUSH 2
+  OP_PUSH 0x0001
+  OP_PUSH 0
+  OP_PUSH &quot;Hello, world!&quot;
+OP_ENDIF
+</code></pre>
+<p>An inscription with pointer 256, with trailing zeroes, which are ignored:</p>
+<pre><code>OP_FALSE
+OP_IF
+  OP_PUSH &quot;ord&quot;
+  OP_PUSH 1
+  OP_PUSH &quot;text/plain;charset=utf-8&quot;
+  OP_PUSH 2
+  OP_PUSH 0x000100
+  OP_PUSH 0
+  OP_PUSH &quot;Hello, world!&quot;
+OP_ENDIF
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ordinal-theory-faq"><a class="header" href="#ordinal-theory-faq">Ordinal Theory FAQ</a></h1>
 <h2 id="what-is-ordinal-theory"><a class="header" href="#what-is-ordinal-theory">What is ordinal theory?</a></h2>
-<p>Ordinal theory is is a protocol for assigning serial numbers to satoshis, the
+<p>Ordinal theory is a protocol for assigning serial numbers to satoshis, the
 smallest subdivision of a bitcoin, and tracking those satoshis as they are
 spent by transactions.</p>
 <p>These serial numbers are large numbers, like this 804766073970493. Every
@@ -748,7 +1041,7 @@ features like globally unique symbols and enhanced provenance.</p>
 <p><em>Inscriptions do not support on-chain royalties.</em> This is negative, but only
 depending on how you look at it. On-chain royalties have been a boon for
 creators, but have also created a huge amount of confusion in the Ethereum NFT
-ecosystem. The ecosystem now grapples with this issue, and is is engaged in a
+ecosystem. The ecosystem now grapples with this issue, and is engaged in a
 race to the bottom, towards a royalties-optional future. Inscriptions have no
 support for on-chain royalties, because they are technically infeasible. If you
 choose to create inscriptions, there are many ways you can work around this
@@ -839,7 +1132,7 @@ quickly, and if you take the wrong tack, you won't have wasted much time.</p>
 <li>Find an issue that needs more research, and do that research and summarize it
 in a comment</li>
 <li>Find an out-of-date issue and comment that it can be closed</li>
-<li>Find an issue that shouldn't be done, and provide constrictive feedback
+<li>Find an issue that shouldn't be done, and provide constructive feedback
 detailing why you think that is the case</li>
 </ul>
 <h2 id="merge-early-and-often"><a class="header" href="#merge-early-and-often">Merge early and often</a></h2>
@@ -849,7 +1142,7 @@ This can be merged, and the next step can be to fix the bug and unignore the
 test. Do research or testing, and report on your results. Break a feature into
 small sub-features, and implement them one at a time.</p>
 <p>Figuring out how to break down a larger PR into smaller PRs where each can be
-merged is a art form well-worth practicing. The hard part is that each PR must
+merged is an art form well-worth practicing. The hard part is that each PR must
 itself be an improvement.</p>
 <p>I strive to follow this advice myself, and am always better off when I do.</p>
 <p>Small changes are fast to write, review, and merge, which is much more fun than
@@ -882,7 +1175,7 @@ entirely funded by donations. If you can, please consider donating!</p>
 <a href="https://twitter.com/realizingerin">erin</a>,
 <a href="https://twitter.com/rodarmor">rodarmor</a>, and
 <a href="https://twitter.com/veryordinally">ordinally</a>.</p>
-<p>Donations received will go towards funding maintainance and development of <code>ord</code>,
+<p>Donations received will go towards funding maintenance and development of <code>ord</code>,
 as well as hosting costs for <a href="https://ordinals.com">ordinals.com</a>.</p>
 <p>Thank you for donating!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ordinal-theory-guides"><a class="header" href="#ordinal-theory-guides">Ordinal Theory Guides</a></h1>
@@ -892,6 +1185,16 @@ explorer, a guide for sat hunters, and a guide to inscriptions.</p>
 <p>The <code>ord</code> binary includes a block explorer. We host a instance of the block
 explorer on mainnet at <a href="https://ordinals.com">ordinals.com</a>, and on signet at
 <a href="https://signet.ordinals.com">signet.ordinals.com</a>.</p>
+<h3 id="running-the-explorer"><a class="header" href="#running-the-explorer">Running The Explorer</a></h3>
+<p>The server can be run locally with:</p>
+<p><code>ord server</code></p>
+<p>To specify a port add the <code>--http-port</code> flag:</p>
+<p><code>ord server --http-port 8080</code></p>
+<p>To enable the JSON-API endpoints add the <code>--enable-json-api</code> or <code>-j</code> flag (see
+<a href="guides/explorer.html#json-api">here</a> for more info):</p>
+<p><code>ord server --enable-json-api</code></p>
+<p>To test how your inscriptions will look you can run:</p>
+<p><code>ord preview &lt;FILE1&gt; &lt;FILE2&gt; ...</code></p>
 <h2 id="search"><a class="header" href="#search">Search</a></h2>
 <p>The search box accepts a variety of object representations.</p>
 <h3 id="blocks"><a class="header" href="#blocks">Blocks</a></h3>
@@ -919,6 +1222,40 @@ difficulty adjustment, and offset within their block:</p>
 <p>Or by percentile, the percentage of bitcoin's supply that has been or will have
 been issued when they are mined:</p>
 <p><a href="https://ordinals.com/search/100%">100%</a></p>
+<h2 id="json-api"><a class="header" href="#json-api">JSON-API</a></h2>
+<p>You can run <code>ord server</code> with the <code>--enable-json-api</code> flag to access endpoints that
+return JSON instead of HTML if you set the HTTP <code>Accept: application/json</code>
+header. The structure of theses objects closely follows
+what is shown in the HTML. These endpoints are:</p>
+<ul>
+<li><code>/inscription/&lt;INSCRIPTION_ID&gt;</code></li>
+<li><code>/inscriptions</code></li>
+<li><code>/inscriptions/block/&lt;BLOCK_HEIGHT&gt;</code></li>
+<li><code>/inscriptions/block/&lt;BLOCK_HEIGHT&gt;/&lt;PAGE_INDEX&gt;</code></li>
+<li><code>/inscriptions/&lt;FROM&gt;</code></li>
+<li><code>/inscriptions/&lt;FROM&gt;/&lt;N&gt;</code></li>
+<li><code>/output/&lt;OUTPOINT&gt;</code></li>
+<li><code>/output/&lt;OUTPOINT&gt;</code></li>
+<li><code>/sat/&lt;SAT&gt;</code></li>
+</ul>
+<p>To get a list of the latest 100 inscriptions you would do:</p>
+<pre><code>curl -s -H &quot;Accept: application/json&quot; 'http://0.0.0.0:80/inscriptions'
+</code></pre>
+<p>To see information about a UTXO, which includes inscriptions inside it, do:</p>
+<pre><code>curl -s -H &quot;Accept: application/json&quot; 'http://0.0.0.0:80/output/bc4c30829a9564c0d58e6287195622b53ced54a25711d1b86be7cd3a70ef61ed:0'
+</code></pre>
+<p>Which returns:</p>
+<pre><code>{
+  &quot;value&quot;: 10000,
+  &quot;script_pubkey&quot;: &quot;OP_PUSHNUM_1 OP_PUSHBYTES_32 156cc4878306157720607cdcb4b32afa4cc6853868458d7258b907112e5a434b&quot;,
+  &quot;address&quot;: &quot;bc1pz4kvfpurqc2hwgrq0nwtfve2lfxvdpfcdpzc6ujchyr3ztj6gd9sfr6ayf&quot;,
+  &quot;transaction&quot;: &quot;bc4c30829a9564c0d58e6287195622b53ced54a25711d1b86be7cd3a70ef61ed&quot;,
+  &quot;sat_ranges&quot;: null,
+  &quot;inscriptions&quot;: [
+    &quot;6fb976ab49dcec017f1e201e84395983204ae1a7c2abf7ced0a85d692e442799i0&quot;
+  ]
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ordinal-inscription-guide"><a class="header" href="#ordinal-inscription-guide">Ordinal Inscription Guide</a></h1>
 <p>Individual sats can be inscribed with arbitrary content, creating
 Bitcoin-native digital artifacts that can be held in a Bitcoin wallet and
@@ -942,6 +1279,7 @@ Bitcoin Core wallets.</p>
 <li>Creating inscriptions with <code>ord wallet inscribe</code></li>
 <li>Sending inscriptions with <code>ord wallet send</code></li>
 <li>Receiving inscriptions with <code>ord wallet receive</code></li>
+<li>Batch inscribing with <code>ord wallet inscribe --batch</code></li>
 </ol>
 <h2 id="getting-help"><a class="header" href="#getting-help">Getting Help</a></h2>
 <p>If you get stuck, try asking for help on the <a href="https://discord.com/invite/87cjuz4FYg">Ordinals Discord
@@ -954,9 +1292,9 @@ the <a href="https://bitcoincore.org/en/download/">download page</a>.</p>
 <p>Making inscriptions requires Bitcoin Core 24 or newer.</p>
 <p>This guide does not cover installing Bitcoin Core in detail. Once Bitcoin Core
 is installed, you should be able to run <code>bitcoind -version</code> successfully from
-the command line.</p>
+the command line. Do <em>NOT</em> use <code>bitcoin-qt</code>.</p>
 <h2 id="configuring-bitcoin-core"><a class="header" href="#configuring-bitcoin-core">Configuring Bitcoin Core</a></h2>
-<p><code>ord</code> requires Bitcoin Core's transaction index.</p>
+<p><code>ord</code> requires Bitcoin Core's transaction index and rest interface.</p>
 <p>To configure your Bitcoin Core node to maintain a transaction
 index, add the following to your <code>bitcoin.conf</code>:</p>
 <pre><code>txindex=1
@@ -964,6 +1302,8 @@ index, add the following to your <code>bitcoin.conf</code>:</p>
 <p>Or, run <code>bitcoind</code> with <code>-txindex</code>:</p>
 <pre><code>bitcoind -txindex
 </code></pre>
+<p>Details on creating or modifying your <code>bitcoin.conf</code> file can be found
+<a href="https://github.com/bitcoin/bitcoin/blob/master/doc/bitcoin-conf.md">here</a>.</p>
 <h2 id="syncing-the-bitcoin-blockchain"><a class="header" href="#syncing-the-bitcoin-blockchain">Syncing the Bitcoin Blockchain</a></h2>
 <p>To sync the chain, run:</p>
 <pre><code>bitcoind -txindex
@@ -974,6 +1314,43 @@ index, add the following to your <code>bitcoin.conf</code>:</p>
 <p>agrees with the block count on a block explorer like <a href="https://mempool.space/">the mempool.space block
 explorer</a>. <code>ord</code> interacts with <code>bitcoind</code>, so you
 should leave <code>bitcoind</code> running in the background when you're using <code>ord</code>.</p>
+<p>The blockchain takes about 600GB of disk space. If you have an external drive
+you want to store blocks on, use the configuration option
+<code>blocksdir=&lt;external_drive_path&gt;</code>. This is much simpler than using the
+<code>datadir</code> option because the cookie file will still be in the default location
+for <code>bitcoin-cli</code> and <code>ord</code> to find.</p>
+<h2 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h2>
+<p>Make sure you can access <code>bitcoind</code> with <code>bitcoin-cli -getinfo</code> and that it is
+fully synced.</p>
+<p>If <code>bitcoin-cli -getinfo</code> returns <code>Could not connect to the server</code>, <code>bitcoind</code>
+is not running.</p>
+<p>Make sure <code>rpcuser</code>, <code>rpcpassword</code>, or <code>rpcauth</code> are <em>NOT</em> set in your
+<code>bitcoin.conf</code> file. <code>ord</code> requires using cookie authentication. Make sure there
+is a file <code>.cookie</code> in your bitcoin data directory.</p>
+<p>If <code>bitcoin-cli -getinfo</code> returns <code>Could not locate RPC credentials</code>, then you
+must specify the cookie file location.
+If you are using a custom data directory (specifying the <code>datadir</code> option),
+then you must specify the cookie location like
+<code>bitcoin-cli -rpccookiefile=&lt;your_bitcoin_datadir&gt;/.cookie -getinfo</code>.
+When running <code>ord</code> you must specify the cookie file location with
+<code>--cookie-file=&lt;your_bitcoin_datadir&gt;/.cookie</code>.</p>
+<p>Make sure you do <em>NOT</em> have <code>disablewallet=1</code> in your <code>bitcoin.conf</code> file. If
+<code>bitcoin-cli listwallets</code> returns <code>Method not found</code> then the wallet is disabled
+and you won't be able to use <code>ord</code>.</p>
+<p>Make sure <code>txindex=1</code> is set. Run <code>bitcoin-cli getindexinfo</code> and it should
+return something like</p>
+<pre><code class="language-json">{
+  &quot;txindex&quot;: {
+    &quot;synced&quot;: true,
+    &quot;best_block_height&quot;: 776546
+  }
+}
+</code></pre>
+<p>If it only returns <code>{}</code>, <code>txindex</code> is not set.
+If it returns <code>&quot;synced&quot;: false</code>, <code>bitcoind</code> is still creating the <code>txindex</code>.
+Wait until <code>&quot;synced&quot;: true</code> before using <code>ord</code>.</p>
+<p>If you have <code>maxuploadtarget</code> set it can interfere with fetching blocks for
+<code>ord</code> index. Either remove it or set <code>whitebind=127.0.0.1:8333</code>.</p>
 <h2 id="installing-ord"><a class="header" href="#installing-ord">Installing <code>ord</code></a></h2>
 <p>The <code>ord</code> utility is written in Rust and can be built from
 <a href="https://github.com/ordinals/ord">source</a>. Pre-built binaries are available on the
@@ -1010,7 +1387,7 @@ supports content types that can be displayed by the <code>ord</code> block explo
 content, the higher the fee that the inscription transaction must pay.</p>
 <p>Inscription content is included in transaction witnesses, which receive the
 witness discount. To calculate the approximate fee that an inscribe transaction
-will pay, divide the content size by four and muliply by the fee rate.</p>
+will pay, divide the content size by four and multiply by the fee rate.</p>
 <p>Inscription transactions must be less than 400,000 weight units, or they will
 not be relayed by Bitcoin Core. One byte of inscription content costs one
 weight unit. Since an inscription transaction includes not just the inscription
@@ -1018,16 +1395,16 @@ content, limit inscription content to less than 400,000 weight units. 390,000
 weight units should be safe.</p>
 <h2 id="creating-inscriptions"><a class="header" href="#creating-inscriptions">Creating Inscriptions</a></h2>
 <p>To create an inscription with the contents of <code>FILE</code>, run:</p>
-<pre><code>ord wallet inscribe --fee-rate FEE_RATE FILE
+<pre><code>ord wallet inscribe --fee-rate FEE_RATE --file FILE
 </code></pre>
 <p>Ord will output two transactions IDs, one for the commit transaction, and one
 for the reveal transaction, and the inscription ID. Inscription IDs are of the
 form <code>TXIDiN</code>, where <code>TXID</code> is the transaction ID of the reveal transaction,
 and <code>N</code> is the index of the inscription in the reveal transaction.</p>
-<p>The commit transaction commits to a tapscript containing the contents of the
+<p>The commit transaction commits to a tapscript containing the content of the
 inscription, and the reveal transaction spends from that tapscript, revealing
-the contents on chain and inscribing them on the first sat of the first output
-of the reveal transaction.</p>
+the content on chain and inscribing it on the first sat of the input that
+contains the corresponding tapscript.</p>
 <p>Wait for the reveal transaction to be mined. You can check the status of the
 commit and reveal transactions using  <a href="https://mempool.space/">the mempool.space block
 explorer</a>.</p>
@@ -1035,8 +1412,17 @@ explorer</a>.</p>
 printed when you run:</p>
 <pre><code>ord wallet inscriptions
 </code></pre>
-<p>And when you visit <a href="https://ordinals.com/">the ordinals explorer</a> at
-<code>ordinals.com/inscription/INSCRIPTION_ID</code>.</p>
+<h2 id="parent-child-inscriptions"><a class="header" href="#parent-child-inscriptions">Parent-Child Inscriptions</a></h2>
+<p>Parent-child inscriptions enable what is colloquially known as collections, see
+<a href="guides/../inscriptions/provenance.html">provenance</a> for more information.</p>
+<p>To make an inscription a child of another, the parent inscription has to be
+inscribed and present in the wallet. To choose a parent run <code>ord wallet inscriptions</code>
+and copy the inscription id (<code>&lt;PARENT_INSCRIPTION_ID&gt;</code>).</p>
+<p>Now inscribe the child inscription and specify the parent like so:</p>
+<pre><code>ord wallet inscribe --fee-rate FEE_RATE --parent &lt;PARENT_INSCRIPTION_ID&gt; --file CHILD_FILE
+</code></pre>
+<p>This relationship cannot be added retroactively, the parent has to be
+present at inception of the child.</p>
 <h2 id="sending-inscriptions"><a class="header" href="#sending-inscriptions">Sending Inscriptions</a></h2>
 <p>Ask the recipient to generate a new address by running:</p>
 <pre><code>ord wallet receive
@@ -1063,6 +1449,52 @@ running:</p>
 </code></pre>
 <p>Once the send transaction confirms, you can can confirm receipt by running:</p>
 <pre><code>ord wallet inscriptions
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="batch-inscribing"><a class="header" href="#batch-inscribing">Batch Inscribing</a></h1>
+<p>Multiple inscriptions can be created inscriptions at the same time using the
+<a href="guides/./../inscriptions/pointer.html">pointer field</a>. This is especially helpful for
+collections, or other cases when multiple inscriptions should share the same
+parent, since the parent can passed into a reveal transaction that creates
+multiple children.</p>
+<p>To create a batch inscription using a batchfile in <code>batch.yaml</code>, run the
+following command:</p>
+<pre><code class="language-bash">ord wallet inscribe --fee-rate 21 --batch batch.yaml
+</code></pre>
+<h2 id="example-batchyaml"><a class="header" href="#example-batchyaml">Example <code>batch.yaml</code></a></h2>
+<pre><code class="language-yaml"># example batch file
+
+# there are two modes:
+# - `separate-outputs`: place all inscriptions in separate postage-sized outputs
+# - `shared-output`: place inscriptions in a single output separated by postage
+mode: separate-outputs
+
+# parent inscription:
+parent: 6ac5cacb768794f4fd7a78bf00f2074891fce68bd65c4ff36e77177237aacacai0
+
+# inscriptions to inscribe
+#
+# each inscription has the following fields:
+#
+# `inscription`: path to inscription contents
+# `metadata`: inscription metadata (optional)
+# `metaprotocol`: inscription metaprotocol (optional)
+inscriptions:
+  - file: mango.avif
+    metadata:
+      title: Delicious Mangos
+      description: &gt;
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper,
+        ligula ornare laoreet tincidunt, odio nisi euismod tortor, vel blandit
+        metus est et odio. Nullam venenatis, urna et molestie vestibulum, orci
+        mi efficitur risus, eu malesuada diam lorem sed velit. Nam fermentum
+        dolor et luctus euismod.
+
+  - file: token.json
+    metaprotocol: brc-20
+
+  - file: tulip.png
+    metadata:
+      author: Satoshi Nakamoto
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sat-hunting"><a class="header" href="#sat-hunting">Sat Hunting</a></h1>
 <p><em>This guide is out of date. Since it was written, the <code>ord</code> binary was changed
@@ -1122,7 +1554,7 @@ wallet is named <code>foo</code>:</p>
 </li>
 <li>
 <p>Display any rare ordinals wallet <code>foo</code>'s UTXOs:</p>
-<pre><code class="language-sh">ord wallet sats
+<pre><code class="language-sh">ord --wallet foo --index-sats wallet sats
 </code></pre>
 </li>
 </ol>
@@ -1269,6 +1701,38 @@ button to display the descriptor.</p>
 <code>bitcoin-cli</code> commands <code>createrawtransaction</code>, <code>signrawtransactionwithwallet</code>,
 and <code>sendrawtransaction</code>, how to do so is complex and outside the scope of this
 guide.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="teleburning"><a class="header" href="#teleburning">Teleburning</a></h1>
+<p>Teleburn addresses can be used to burn assets on other blockchains, leaving
+behind in the smoking rubble a sort of forwarding address pointing to an
+inscription on Bitcoin.</p>
+<p>Teleburning an asset means something like, &quot;I'm out. Find me on Bitcoin.&quot;</p>
+<p>Teleburn addresses are derived from inscription IDs. They have no corresponding
+private key, so assets sent to a teleburn address are burned. Currently, only
+Ethereum teleburn addresses are suppported. Pull requests adding teleburn
+addresses for other chains are welcome.</p>
+<h2 id="ethereum"><a class="header" href="#ethereum">Ethereum</a></h2>
+<p>Ethereum teleburn addresses are derived by taking the first 20 bytes of the
+SHA-256 hash of the inscription ID, serialized as 36 bytes, with the first 32
+bytes containing the transaction ID, and the last four bytes containing
+big-endian inscription index, and interpreting it as an Ethereum address.</p>
+<h2 id="example-2"><a class="header" href="#example-2">Example</a></h2>
+<p>The ENS domain name <a href="https://app.ens.domains/rodarmor.eth">rodarmor.eth</a>, was
+teleburned to <a href="https://ordinals.com/inscription/6fb976ab49dcec017f1e201e84395983204ae1a7c2abf7ced0a85d692e442799i0">inscription
+zero</a>.</p>
+<p>Running the inscription ID of inscription zero is
+<code>6fb976ab49dcec017f1e201e84395983204ae1a7c2abf7ced0a85d692e442799i0</code>.</p>
+<p>Passing <code>6fb976ab49dcec017f1e201e84395983204ae1a7c2abf7ced0a85d692e442799i0</code> to
+the teleburn command:</p>
+<pre><code class="language-bash">$ ord teleburn 6fb976ab49dcec017f1e201e84395983204ae1a7c2abf7ced0a85d692e442799i0
+</code></pre>
+<p>Returns:</p>
+<pre><code class="language-json">{
+  &quot;ethereum&quot;: &quot;0xe43A06530BdF8A4e067581f48Fae3b535559dA9e&quot;
+}
+</code></pre>
+<p>Indicating that <code>0xe43A06530BdF8A4e067581f48Fae3b535559dA9e</code> is the Ethereum
+teleburn address for inscription zero, which is, indeed, the current owner, on
+Ethereum, of <code>rodarmor.eth</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="collecting"><a class="header" href="#collecting">Collecting</a></h1>
 <p>Currently, <a href="https://github.com/ordinals/ord/">ord</a> is the only wallet supporting
 sat-control and sat-selection, which are required to safely store and send rare
@@ -1381,12 +1845,63 @@ ordinals.</p>
 <p><img src="guides/collecting/images/sending_06.png" alt="" /></p>
 <p>If you want to track the status of your transaction you can copy the <code>Transaction Id (Txid)</code> and paste that into <a href="https://mempool.space">mempool.space</a></p>
 <p>Once the transaction has confirmed you can check the inscription page on <a href="https://ordinals.com">ordinals.com</a> to validate that it has moved to the new output location and address.</p>
-<h2 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h2>
+<h2 id="troubleshooting-1"><a class="header" href="#troubleshooting-1">Troubleshooting</a></h2>
 <h4 id="sparrow-wallet-is-not-showing-a-transactionutxo-but-i-can-see-it-on-mempoolspace"><a class="header" href="#sparrow-wallet-is-not-showing-a-transactionutxo-but-i-can-see-it-on-mempoolspace">Sparrow wallet is not showing a transaction/UTXO, but I can see it on mempool.space!</a></h4>
 <p>Make sure that your wallet is connected to a bitcoin node. To validate this, head into the <code>Preferences</code>-&gt; <code>Server</code> settings, and click <code>Edit Existing Connection</code>.</p>
 <p><img src="guides/collecting/images/troubleshooting_01.png" alt="" /></p>
 <p>From there you can select a node and click <code>Test Connection</code> to validate that Sparrow is able to connect successfully.</p>
 <p><img src="guides/collecting/images/troubleshooting_02.png" alt="" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="testing"><a class="header" href="#testing">Testing</a></h1>
+<p>Ord can be tested using the following flags to specify the test network. For more
+information on running Bitcoin Core for testing, see <a href="https://developer.bitcoin.org/examples/testing.html">Bitcoin's developer documentation</a>.</p>
+<p>Most <code>ord</code> commands in <a href="guides/inscriptions.html">inscriptions</a> and <a href="guides/explorer.html">explorer</a>
+can be run with the following network flags:</p>
+<div class="table-wrapper"><table><thead><tr><th>Network</th><th>Flag</th></tr></thead><tbody>
+<tr><td>Testnet</td><td><code>--testnet</code> or <code>-t</code></td></tr>
+<tr><td>Signet</td><td><code>--signet</code> or <code>-s</code></td></tr>
+<tr><td>Regtest</td><td><code>--regtest</code> or <code>-r</code></td></tr>
+</tbody></table>
+</div>
+<p>Regtest doesn't require downloading the blockchain or indexing ord.</p>
+<h2 id="example-3"><a class="header" href="#example-3">Example</a></h2>
+<p>Run bitcoind in regtest with:</p>
+<pre><code>bitcoind -regtest -txindex
+</code></pre>
+<p>Create a wallet in regtest with:</p>
+<pre><code>ord -r wallet create
+</code></pre>
+<p>Get a regtest receive address with:</p>
+<pre><code>ord -r wallet receive
+</code></pre>
+<p>Mine 101 blocks (to unlock the coinbase) with:</p>
+<pre><code>bitcoin-cli -regtest generatetoaddress 101 &lt;receive address&gt;
+</code></pre>
+<p>Inscribe in regtest with:</p>
+<pre><code>ord -r wallet inscribe --fee-rate 1 --file &lt;file&gt;
+</code></pre>
+<p>Mine the inscription with:</p>
+<pre><code>bitcoin-cli -regtest generatetoaddress 1 &lt;receive address&gt;
+</code></pre>
+<p>View the inscription in the regtest explorer:</p>
+<pre><code>ord -r server
+</code></pre>
+<h2 id="testing-recursion"><a class="header" href="#testing-recursion">Testing Recursion</a></h2>
+<p>When testing out <a href="guides/../inscriptions/recursion.html">recursion</a>, inscribe the
+dependencies first (example with <a href="https://p5js.org">p5.js</a>):</p>
+<pre><code>ord -r wallet inscribe --fee-rate 1 --file p5.js
+</code></pre>
+<p>This should return a <code>inscription_id</code> which you can then reference in your
+recursive inscription.</p>
+<p>ATTENTION: These ids will be different when inscribing on
+mainnet or signet, so be sure to change those in your recursive inscription for
+each chain.</p>
+<p>Then you can inscribe your recursive inscription with:</p>
+<pre><code>ord -r wallet inscribe --fee-rate 1 --file recursive-inscription.html
+</code></pre>
+<p>Finally you will have to mine some blocks and start the server:</p>
+<pre><code>bitcoin-cli generatetoaddress 6 &lt;receive address&gt;
+ord -r server
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="moderation"><a class="header" href="#moderation">Moderation</a></h1>
 <p><code>ord</code> includes a block explorer, which you can run locally with <code>ord server</code>.</p>
 <p>The block explorer allows viewing inscriptions. Inscriptions are user-generated
@@ -1421,6 +1936,29 @@ which is called <code>ord</code>, with a config file located at <code>/var/lib/o
 </ol>
 <p>Currently, <code>ord</code> is slow to restart, so the site will not come back online
 immediately.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="reindexing"><a class="header" href="#reindexing">Reindexing</a></h1>
+<p>Sometimes the <code>ord</code> database must be reindexed, which means deleting the
+database and restarting the indexing process with either <code>ord index update</code> or
+<code>ord server</code>. Reasons to reindex are:</p>
+<ol>
+<li>A new major release of ord, which changes the database scheme</li>
+<li>The database got corrupted somehow</li>
+</ol>
+<p>The database <code>ord</code> uses is called <a href="https://github.com/cberner/redb">redb</a>,
+so we give the index the default file name <code>index.redb</code>. By default we store this
+file in different locations depending on your operating system.</p>
+<div class="table-wrapper"><table><thead><tr><th>Platform</th><th>Value</th><th>Example</th></tr></thead><tbody>
+<tr><td>Linux</td><td><code>$XDG_DATA_HOME</code>/ord or <code>$HOME</code>/.local/share/ord</td><td>/home/alice/.local/share/ord</td></tr>
+<tr><td>macOS</td><td><code>$HOME</code>/Library/Application Support/ord</td><td>/Users/Alice/Library/Application Support/ord</td></tr>
+<tr><td>Windows</td><td><code>{FOLDERID_RoamingAppData}</code>\ord</td><td>C:\Users\Alice\AppData\Roaming\ord</td></tr>
+</tbody></table>
+</div>
+<p>So to delete the database and reindex on MacOS you would have to run the following
+commands in the terminal:</p>
+<pre><code class="language-bash">rm ~/Library/Application Support/ord/index.redb
+ord index update
+</code></pre>
+<p>You can of course also set the location of the data directory yourself with <code>ord --data-dir &lt;DIR&gt; index update</code> or give it a specific filename and path with <code>ord --index &lt;FILENAME&gt; index update</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ordinal-bounty-hunting-hints"><a class="header" href="#ordinal-bounty-hunting-hints">Ordinal Bounty Hunting Hints</a></h1>
 <ul>
 <li>
